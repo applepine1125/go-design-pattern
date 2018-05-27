@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestInheritPrintWeak(t *testing.T) {
-	p := InheritPrintBanner{&InheritBanner{"Hello"}}
+func TestDelegatePrintWeak(t *testing.T) {
+	p := DelegatePrintBanner{&DelegateBanner{"Hello"}}
 	buf := &bytes.Buffer{}
 	p.printWeak(buf)
 
@@ -19,8 +19,8 @@ func TestInheritPrintWeak(t *testing.T) {
 
 }
 
-func TestInheritPrintStrong(t *testing.T) {
-	p := InheritPrintBanner{&InheritBanner{"Hello"}}
+func TestDelegatePrintStrong(t *testing.T) {
+	p := DelegatePrintBanner{&DelegateBanner{"Hello"}}
 	buf := &bytes.Buffer{}
 	p.printStrong(buf)
 
