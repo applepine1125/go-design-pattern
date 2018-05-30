@@ -11,7 +11,7 @@ type InheritBanner struct {
 
 type InheritPrint interface {
 	PrintWeak()
-	PrintStr0ng()
+	PrintStrong()
 }
 
 type InheritPrintBanner struct {
