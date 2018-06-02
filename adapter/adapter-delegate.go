@@ -11,7 +11,7 @@ type DelegateBanner struct {
 
 type DelegatePrint interface {
 	PrintWeak()
-	PrintStr0ng()
+	PrintStrong()
 }
 
 type DelegatePrintBanner struct {
