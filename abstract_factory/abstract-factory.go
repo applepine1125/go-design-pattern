@@ -1,4 +1,4 @@
-package factory
+package abstract_factory
 
 type Item interface {
 	MakeHTML() string
@@ -16,7 +16,7 @@ type Tray interface {
 type Page interface {
 	Item
 	Add(item Item)
-	Output()
+	Output() string
 }
 
 type Factroy interface {
@@ -46,7 +46,7 @@ type ListLink struct {
 }
 
 func (ll *ListLink) MakeHTML() string {
-	return "<li><a href =\"" + ll.url + "\">" + ll.caption + "</a></li>\n"
+	return "<li>\n<a href=\"" + ll.url + "\">\n" + ll.caption + "\n</a>\n</li>"
 }
 
 type ListTray struct {
@@ -75,18 +75,23 @@ type ListPage struct {
 }
 
 func (lp *ListPage) MakeHTML() string {
-	page := "<html><head><title>" + lp.title + "</title></head>\n"
+	page := "<html>\n<head>\n<title>\n" + lp.title + "\n</title>\n</head>\n"
 	page += "<body>\n"
-	page += "<h1>" + lp.title + "</h1>\n"
+	page += "<h1>\n" + lp.title + "\n</h1>\n"
 	page += "<ul>\n"
 	for _, item := range lp.content {
-		page += item.MakeHTML() + "\n"
+		page += item.MakeHTML()
 	}
 	page += "</ul>\n"
-	page += "<hr><address>" + lp.author + "</address>"
-	page += "</body></html>\n"
+	page += "<hr>\n<address>\n" + lp.author + "\n</address>"
+	page += "\n</body>\n</html>"
 	return page
 }
 
-func (lp *ListPage) Add(item Item) {}
-func (lp *ListPage) Output()       {}
+func (lp *ListPage) Add(item Item) {
+	lp.content = append(lp.content, item)
+
+}
+func (lp *ListPage) Output() string {
+	return lp.MakeHTML()
+}
